@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Powered Project Optimization</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background-color: #4A00E0;
+            padding: 15px;
+            color: white;
+            text-align: left;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            padding: 20px;
+        }
+        .form-container, .results-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            width: 45%;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #4A00E0;
+            color: white;
+            font-size: 16px;
+            margin-top: 15px;
+            cursor: pointer;
+            border: none;
+        }
+        .chart-container {
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">AI-Powered Project Optimization</div>
+    <div class="container">
+        <div class="form-container">
+            <h2>Project Details</h2>
+            <label>Project Type:</label>
+            <select>
+                <option>Metro</option>
+                <option>Highway</option>
+                <option>Smart City</option>
+            </select>
+            <label>Budget (INR/USD):</label>
+            <input type="number" placeholder="Enter budget">
+            <label>Start Date:</label>
+            <input type="date">
+            <label>End Date:</label>
+            <input type="date">
+            <h2>Risk & Challenges</h2>
+            <label>Top Risks Identified:</label>
+            <select multiple>
+                <option>Supply Chain</option>
+                <option>Workforce Shortage</option>
+                <option>Cost Overruns</option>
+                <option>Weather</option>
+            </select>
+            <label>Risk Probability (%):</label>
+            <input type="range" min="0" max="100" value="50">
+            <label>Material Lead Time (Days):</label>
+            <input type="number" placeholder="Enter lead time">
+            <h2>Resource & Workforce</h2>
+            <label>Current Workforce Availability (%):</label>
+            <input type="range" min="0" max="100" value="75">
+            <label>Equipment Utilization Rate (%):</label>
+            <input type="range" min="0" max="100" value="80">
+            <h2>Automation & Monitoring</h2>
+            <label>Tasks to Automate:</label>
+            <select multiple>
+                <option>Scheduling</option>
+                <option>Reporting</option>
+                <option>Compliance Checks</option>
+                <option>Procurement</option>
+            </select>
+            <label>Live Progress Tracking?</label>
+            <select>
+                <option>Yes</option>
+                <option>No</option>
+            </select>
+            <label>Current Cost Overrun (%):</label>
+            <input type="number" placeholder="Enter cost deviation">
+            <button onclick="generateResults()">SUBMIT</button>
+        </div>
+        
+        <div class="results-container" id="results" style="display: none;">
+            <h2>AI-Generated Insights</h2>
+            <p><strong>Risk Score:</strong> High probability of supply chain delays (85%).</p>
+            <p><strong>Mitigation Strategy:</strong> Switch to alternate supplier to reduce lead time by 3 days.</p>
+            <p><strong>Workforce Plan:</strong> Increase labor by 10% to meet deadlines.</p>
+            <p><strong>Efficiency Score:</strong> Current efficiency: 78%, potential improvement: +12%.</p>
+            
+            <div class="chart-container">
+                <canvas id="riskChart"></canvas>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function generateResults() {
+            document.getElementById('results').style.display = 'block';
+            renderCharts();
+        }
+
+        function renderCharts() {
+            var ctx = document.getElementById('riskChart').getContext('2d');
+            var riskChart = new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: ['Supply Chain', 'Workforce', 'Material Costs', 'Weather'],
+                    datasets: [{
+                        data: [40, 25, 20, 15],
+                        backgroundColor: ['red', 'blue', 'green', 'orange']
+                    }]
+                }
+            });
+        }
+    </script>
+</body>
+</html>
